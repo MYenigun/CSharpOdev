@@ -1,0 +1,212 @@
+1- Switch case ile müşteriden alınan sipariş numarasına göre hangi ürünün sipariş edildiğini belirleyen algoritma yazınız.
+
+Console.Write("Lütfen sipariş numarasını girin: ");
+int siparisNo = Convert.ToInt32(Console.ReadLine());
+
+string urun = "";
+
+switch (siparisNo)
+{
+    case 1:
+        urun = "1. Ürün 'Bilgisayar'";
+        break;
+      
+    case 2:
+        urun = "2. Ürün 'Telefon'";
+        break;
+    case 3:
+        urun = "3. Ürün 'Tablet'";
+        break;
+    case 4:
+        urun = "4. Ürün 'Klavye'";
+        break;
+    case 5:
+        urun = "5. Ürün 'Mouse'";
+        break;
+    default:
+        Console.WriteLine("Geçersiz sipariş numarası girdiniz.");
+        Console.ReadLine();
+        return;
+}
+
+Console.WriteLine($"Sipariş edilen {urun}.");
+Console.ReadLine();
+    
+2- kullanıcıdan kaç ürün almak istediğini soran,her ürünün fiyatını alarak toplam alışveriş tutarını hesaplayan bir algoritma yazınız.(döngü için for döngüsü kullanınız)
+
+
+Console.WriteLine("Kaç adet ürün almak istiyorsunuz? : ");
+int productCount = Convert.ToInt32(Console.ReadLine());
+double result = 0;
+for (int i = 1; i <= productCount; i++)
+{
+    Console.WriteLine(i + ".ürünün liste fiyatını gir: ");
+    result += Convert.ToDouble(Console.ReadLine());
+}
+Console.WriteLine("Ödenmesi gereken miktar: " + result);
+Console.ReadLine();
+
+
+3- Do-While ve While döngüsü nedir? Bununla ilgili örnek yapınız.
+
+        int a = 0;
+        do
+        {
+            Console.WriteLine(a);
+            a++;
+        }
+
+        while (a < 100);
+            Console.WriteLine(a);
+            Console.ReadLine();       
+   
+
+4- Bir sayının mükemmel sayı olup olmadığı kontrol eden algoritma yazınız.
+
+Console.WriteLine ("Sayı giriniz"); 
+int sayi = Convert.ToInt32 (Console.ReadLine ()); 
+int toplam = 0;
+for (int i = 1; i <sayi; i ++) 
+{ 
+   if (sayi% i == 0) 
+   { 
+     toplam = toplam + i; 
+   } 
+}
+if (toplam == sayi) 
+{ 
+   Console.WriteLine (sayi + "sayı Mükemmel Sayıdır"); 
+}
+else 
+{ 
+   Console.WriteLine (sayi + "sayı Mükemmel Sayı Değildir"); 
+}
+Console.ReadLine ();
+
+
+5- String metotlarını araştırınız. Her bir metot için örnek yapınız.
+
+//ToUpper() / ToLower():
+
+ string s = "Merhaba Pair5";
+ Console.WriteLine(s.ToUpper()); 
+ Console.WriteLine(s.ToLower());
+
+//Trim():
+
+ string s = "    Merhaba Pair5    ";
+ Console.WriteLine(s.Trim());
+
+//Split():
+
+ string s = "Pair5,grubu,.NET";
+ string[] dizi = s.Split(',');
+
+ for (int i = 0; i < dizi.Length; i++)
+ {
+     Console.WriteLine(dizi[i]);
+ }
+
+//Replace():
+
+ string s = "Merhaba Pair5";
+ Console.WriteLine(s.Replace("Pair5", "C#"));
+
+//IndexOf() / LastIndexOf():
+
+ string s = "Merhaba Pair5";
+ Console.WriteLine(s.IndexOf("Pair5"));   
+ Console.WriteLine(s.LastIndexOf("a"));
+
+//StartsWith() / EndsWith():
+
+ string s = "Merhaba Pair5";
+ Console.WriteLine(s.StartsWith("Merhaba"));
+ Console.WriteLine(s.EndsWith("Pair5"));     
+
+//Contains():
+
+ string s = "Merhaba Pair5";
+ Console.WriteLine(s.Contains("Pair5"));
+
+//Substring(): 
+
+ string s = "Merhaba Pair5";
+ Console.WriteLine(s.Substring(1, 5));
+
+//Clone():
+
+ string s = "Pair5grubu";
+ string cs = (string)s.Clone();
+ Console.WriteLine(cs);
+
+//Insert():
+
+  string s1 = "Pair5";
+  string s2 = "Grubu";
+  Console.WriteLine(s1.Insert(5, s2));
+
+//Remove(): 
+
+string s = "Pair5Grubu";
+Console.WriteLine(s.Remove(7));
+
+//Length():
+
+ string s = "Pair5Grubu ";
+ Console.WriteLine(s.Length);
+
+//PadRight / PadLeft():
+
+ string s = "Pair5Grubu  ";
+ Console.WriteLine(s.PadRight(13, 'a'));
+ Console.WriteLine(s.PadLeft(13, 'a'));
+ 
+6- Bir mağazada alınan ürünün fiyatı 300 tl üzerinde ise 50 tl olan kargo ücreti alınmamaktadır. ürünün fiyatı girildiğinde toplam ödemesi gereken tutarı gösteren programı yazınız.
+
+double odemeTutari;
+Console.Write("Ürünün fiyatını giriniz:");
+double fiyat = Convert.ToDouble(Console.ReadLine());
+if (fiyat > 300) {
+   odemeTutari = fiyat;
+   Console.WriteLine("Ödemeniz gereken tutar {0} TL'dir.", odemeTutari);
+}
+else 
+{
+    odemeTutari = fiyat + 50;
+    Console.WriteLine("Ödemeniz gereken tutar kargo dahil {0} TL'dir.", odemeTutari);
+}
+Console.ReadKey();
+
+
+7- iki ürünün kullanıcı tarafından fiyatı girildiğinde toplam fiyat 500 tl'den fazla ise 2.üründen %40 indirim yaparak ödenecek tutarı gösteren uygulamayı yazınız.
+
+Console.Write("İlk ürünün fiyatını girin: ");
+int urun1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("İkinci ürünün fiyatını girin: ");
+int urun2 = Convert.ToInt32(Console.ReadLine());
+
+int toplam = urun1 + urun2;
+if (toplam >= 500)
+{
+    urun2 = urun2 - ((urun2 * 40) / 100);
+    toplam = urun1 + urun2;
+    Console.WriteLine("**2. ürüne %40 indirim yapılmıştır**");
+}
+Console.Write("Ödenecek tutar: " + toplam);
+Console.ReadLine();
+
+8- 1-200 arası içinde 3'e veya 5'e tam bölünebilen sayıları listeleyen ve kaç adet olduğunu yazdıran programı yazınız.
+
+int say = 0;
+for (int i = 0; i < 200; i++)
+    {
+        if (i % 3 == 0 || i % 5 == 0)
+        {
+        say++;
+        Console.WriteLine(i + ","); 
+        
+        }
+    }
+Console.WriteLine(""+say+" adet bölünebilen sayı bulunuyor.");
+Console.ReadLine();
